@@ -77,7 +77,9 @@ function certificationStatus() {
 }
 
 function productBatch() {
-  return PRODUCT.batch;
+  return recordLookup.status === "valid" && recordLookup.record?.batch
+    ? recordLookup.record.batch
+    : PRODUCT.batch;
 }
 
 async function loadStaticRecord() {
